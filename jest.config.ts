@@ -16,7 +16,7 @@ const config: Config = {
   // cacheDirectory: "/tmp/jest_rs",
 
   // Automatically clear mock calls, instances, contexts and results before every test
-  // clearMocks: true,
+  //clearMocks: true,
 
   // Indicates whether the coverage information should be collected while executing the test
   // collectCoverage: false,
@@ -25,7 +25,7 @@ const config: Config = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  // coverageDirectory: '../coverage',
+  // coverageDirectory: undefined,
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -33,20 +33,18 @@ const config: Config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  // coverageProvider: 'v8',
+  //coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
-  // coverageReporters: ["json", "text", "lcov", "clover"],
+  // coverageReporters: [
+  //   "json",
+  //   "text",
+  //   "lcov",
+  //   "clover"
+  // ],
 
   // An object that configures minimum threshold enforcement for coverage results
-  // coverageThreshold: {
-  //   global: {
-  //     branches: 80,
-  //     functions: 80,
-  //     lines: 80,
-  //     statements: 80,
-  //   },
-  // },
+  // coverageThreshold: undefined,
 
   // A path to a custom dependency extractor
   // dependencyExtractor: undefined,
@@ -125,7 +123,7 @@ const config: Config = {
   // restoreMocks: false,
 
   // The root directory that Jest should scan for tests and modules within
-  // rootDir: './src',
+  //rootDir: './src',
 
   // A list of paths to directories that Jest should use to search for files in
   // roots: [
@@ -139,7 +137,7 @@ const config: Config = {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: ['./core/shared/infra/testing/expect-helpers.ts'],
+  //setupFilesAfterEnv: ['./core/shared/infra/testing/expect-helpers.ts'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -210,25 +208,29 @@ const config: Config = {
   coveragePathIgnorePatterns: [
     '/node_modules/',
     '.interface.ts',
-    'shared/infra/testing',
-    'shared-modules/testing',
+    '-interface.ts',
+    'shared/testing',
+    'shared-module/testing',
     'validator-rules.ts',
     '-fixture.ts',
     '.input.ts',
     '.d.ts',
   ],
-  testEnvironment: 'node',
   coverageThreshold: {
     global: {
+      statements: 80,
       branches: 80,
       functions: 80,
       lines: 80,
-      statements: 80,
     },
   },
+  testEnvironment: 'node',
   coverageProvider: 'v8',
-  collectCoverage: false,
   clearMocks: true,
+  setupFilesAfterEnv: [
+    './core/shared/infra/testing/expect-helpers.ts',
+    './core/shared/infra/testing/global-helpers.ts',
+  ],
 };
 
 export default config;
